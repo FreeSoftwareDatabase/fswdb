@@ -1,0 +1,15 @@
+/* © Lorenzo L. Ancora, SPDX-License-Identifier: EUPL-1.2 */
+.wcard {
+    width: 18rem;
+}
+
+.colbtn:hover,
+.colbtn:focus {
+    text-decoration: none;
+}
+
+#caticon,
+#OSicon {
+    max-height: 64px;
+    filter: drop-shadow(0px 0px 2px gray);
+}

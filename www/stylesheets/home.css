@@ -1,0 +1,46 @@
+/* © Lorenzo L. Ancora, SPDX-License-Identifier: EUPL-1.2 */
+.form-control::placeholder {
+    opacity: 0.5;
+}
+
+#sgroup {
+    min-width: 10em;
+    max-width: 30em;
+}
+
+#sgroup .form-control:focus,
+#sgroup button:focus {
+    box-shadow: none;
+}
+
+#shelp {
+    width: fit-content;
+}
+
+#s:focus::placeholder {
+    opacity: 0;
+}
+
+#sbtn span {
+    margin-left: -5px;
+    font-weight: bold;
+}
+
+@keyframes filterwarn {
+    from { filter: grayscale(80%); }
+    to { filter: grayscale(0%); }
+}
+
+@supports (animation: filterwarn) {
+    #limitDropDown.active {
+        animation: filterwarn 0.7s infinite alternate; 
+    }
+}
+
+#limitDropDownList {
+    z-index: 1031;
+}
+
+#limitDropDownList a.active {
+    pointer-events: none;
+}

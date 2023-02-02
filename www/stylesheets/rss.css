@@ -1,0 +1,31 @@
+/* © Lorenzo L. Ancora, SPDX-License-Identifier: EUPL-1.2 */
+channel * {
+    display: block;
+    margin: 1em;
+}
+
+channel>title {
+    font-size: larger;
+    font-weight: bold;
+}
+
+channel link,
+channel description {
+    font-size: smaller;
+}
+
+channel item {
+    background: linear-gradient(to right, black, white 1%);
+}
+
+channel item * {
+    display: block;
+}
+
+channel generator,
+channel ttl,
+channel docs,
+channel link,
+channel item guid {
+    display: none;
+}

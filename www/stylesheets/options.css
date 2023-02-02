@@ -1,0 +1,76 @@
+/* © Lorenzo L. Ancora, SPDX-License-Identifier: EUPL-1.2 */
+.accessibility-input[type='checkbox'],
+.accessibility-label {
+    cursor: pointer;
+}
+.accessibility-label {
+    width: 100%;
+}
+label[for="fntswitchss"] {
+    font-family: sans-serif !important;
+    letter-spacing: normal !important;  
+}
+label[for="fntswitchspc"] {
+    font-family: serif !important;
+    letter-spacing: 0.12rem !important;
+}
+body, .navbar {
+    transition: background-color 1s ease-in-out 0.1s,
+                letter-spacing 0.5s ease-in-out 0.1s;
+}
+
+.modal[data-awaiting="XHR"]#addTokenModal .modal-dialog .modal-content {
+    cursor: wait !important;
+}
+
+.modal[data-awaiting="XHR"]#addTokenModal .modal-dialog .modal-content input,
+.modal[data-awaiting="XHR"]#addTokenModal .modal-dialog .modal-content button {
+    pointer-events: none;
+}
+
+.modal:not([data-awaiting="XHR"])#addTokenModal #spinner {
+    display: none;
+}
+
+.wcard {
+    width: 18rem;
+}
+
+div#bti {
+    background-image: url('/static/img/speed.svg');
+    background-size: cover;
+    background-position: center center;
+}
+div#bti.schecked img {
+    -moz-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+
+div#fnt {
+    background-image: url('/static/img/font.svg'), url('/static/img/font_gothic.svg');
+    background-size: cover;
+    background-position: center center;
+}
+div#fnt.schecked {
+    background-image: url('/static/img/font_gothic.svg');
+}
+
+div#nm {
+    background-image: url('/static/img/nightmode.svg');
+    background-size: cover;
+    background-position: center center;
+}
+div#nm.schecked {
+    background-image: url('/static/img/nightmode_page.svg'), url('/static/img/nightmode.svg');
+}
+
+div#aii.schecked input[type='text'],
+div#aii.schecked input[type='button'] {
+    background: url('/static/img/cursor.svg') center/16px no-repeat;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+}

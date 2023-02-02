@@ -1,0 +1,74 @@
+<svg width="128" height="128" version="1.1" viewBox="0 0 33.9 33.9" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter id="c" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">
+   <feComposite in2="SourceGraphic" k2="1" operator="arithmetic" result="composite1"/>
+   <feColorMatrix in="composite1" result="colormatrix1" type="saturate" values="1"/>
+   <feFlood flood-color="rgb(218,165,32)" result="flood1"/>
+   <feBlend in="flood1" in2="colormatrix1" mode="multiply" result="blend1"/>
+   <feBlend in2="blend1" mode="screen" result="blend2"/>
+   <feColorMatrix in="blend2" result="colormatrix2" type="saturate" values="1"/>
+   <feComposite in="colormatrix2" in2="SourceGraphic" operator="in" result="composite2"/>
+  </filter>
+  <filter id="b" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">
+   <feComposite in2="SourceGraphic" k2="1.03063" operator="arithmetic" result="composite1"/>
+   <feColorMatrix in="composite1" result="colormatrix1" type="saturate" values="1"/>
+   <feFlood flood-color="rgb(97,160,253)" result="flood1"/>
+   <feBlend in="flood1" in2="colormatrix1" mode="multiply" result="blend1"/>
+   <feBlend in2="blend1" mode="lighten" result="blend2"/>
+   <feColorMatrix in="blend2" result="colormatrix2" type="saturate" values="1"/>
+   <feComposite in="colormatrix2" in2="SourceGraphic" operator="in" result="composite2"/>
+  </filter>
+  <filter id="a" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">
+   <feComposite in2="SourceGraphic" k2="1.03063" operator="arithmetic" result="composite1"/>
+   <feColorMatrix in="composite1" result="colormatrix1" type="saturate" values="0"/>
+   <feFlood flood-color="rgb(110,119,127)" result="flood1"/>
+   <feBlend in="flood1" in2="colormatrix1" mode="multiply" result="blend1"/>
+   <feBlend in2="blend1" mode="lighten" result="blend2"/>
+   <feColorMatrix in="blend2" result="colormatrix2" type="saturate" values="1"/>
+   <feComposite in="colormatrix2" in2="SourceGraphic" operator="in" result="composite2"/>
+  </filter>
+  <filter id="d" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">
+   <feComposite in2="SourceGraphic" k2="1.03063" operator="arithmetic" result="composite1"/>
+   <feColorMatrix in="composite1" result="colormatrix1" type="saturate" values="0"/>
+   <feFlood flood-color="rgb(126,71,152)" result="flood1"/>
+   <feBlend in="flood1" in2="colormatrix1" mode="multiply" result="blend1"/>
+   <feBlend in2="blend1" mode="screen" result="blend2"/>
+   <feColorMatrix in="blend2" result="colormatrix2" type="saturate" values="1"/>
+   <feComposite in="colormatrix2" in2="SourceGraphic" operator="in" result="composite2"/>
+  </filter>
+ </defs>
+ <g fill="#444" fill-rule="evenodd" stroke-width=".2">
+  <g transform="matrix(1.84 -.979 .979 1.84 -14.8 4.08)" filter="url(#b)" opacity=".7">
+   <path d="m1.79 13.8 0.452 0.214v0.64l-0.452-0.341z" points="2.2464224,14.055792 2.2464224,14.695849 1.7940066,14.355006 1.7940066,13.842268 " fill="#e9e9ff"/>
+   <path d="m1.25 13.9v0.547l0.548-0.0924v-0.513z" points="1.2464225,14.447397 1.7940066,14.355006 1.7940066,13.842268 1.2464225,13.900147 " fill="#353564"/>
+   <path d="m1.25 14.4 0.343 0.395 0.657-0.146-0.452-0.341z" points="1.5899074,14.842268 2.2464224,14.695849 1.7940066,14.355006 1.2464225,14.447397 " fill="#afafde"/>
+   <path d="m1.25 13.9 0.343 0.247 0.657-0.0917-0.452-0.214z" points="1.5899074,14.147518 2.2464224,14.055792 1.7940066,13.842268 1.2464225,13.900147 " fill="#4d4d9f"/>
+   <path d="m1.59 14.1v0.695l0.657-0.146v-0.64z" points="1.5899074,14.842268 2.2464224,14.695849 2.2464224,14.055792 1.5899074,14.147518 " fill="#d7d7ff"/>
+   <path d="m1.25 13.9 0.343 0.247v0.695l-0.343-0.395z" points="1.5899074,14.147518 1.5899074,14.842268 1.2464225,14.447397 1.2464225,13.900147 " fill="#8686bf"/>
+  </g>
+  <g transform="matrix(2.09 0 0 2.09 -1.16 -1.13)" filter="url(#d)" opacity=".7">
+   <path d="m6.72 14 0.357 1.01-0.969 0.962-0.164-1.2z" points="7.0726502,15.022453 6.1032896,15.984613 5.9394038,14.787064 6.7159416,14.016294 " fill="#e9e9ff"/>
+   <path d="m5.81 13.3-0.829 0.823 0.963 0.69 0.777-0.771z" points="4.9763272,14.096638 5.9394038,14.787064 6.7159416,14.016294 5.8051326,13.273989 " fill="#353564"/>
+   <path d="m4.98 14.1-0.0817 1.11 1.21 0.774-0.164-1.2z" points="4.8946399,15.210429 6.1032896,15.984613 5.9394038,14.787064 4.9763272,14.096638 " fill="#afafde"/>
+   <path d="m5.81 13.3 0.142 0.892 1.13 0.856-0.357-1.01z" points="5.9468325,14.166052 7.0726502,15.022453 6.7159416,14.016294 5.8051326,13.273989 " fill="#4d4d9f"/>
+   <path d="m5.95 14.2-1.05 1.04 1.21 0.774 0.969-0.962z" points="4.8946399,15.210429 6.1032896,15.984613 7.0726502,15.022453 5.9468325,14.166052 " fill="#d7d7ff"/>
+   <path d="m5.81 13.3 0.142 0.892-1.05 1.04 0.0817-1.11z" points="5.9468325,14.166052 4.8946399,15.210429 4.9763272,14.096638 5.8051326,13.273989 " fill="#8686bf"/>
+  </g>
+  <g transform="matrix(2.09 0 0 2.09 -1.16 -1.13)" filter="url(#c)" opacity=".7">
+   <path d="m10.5 13-0.371-0.49 0.335-0.697 0.304 0.628z" points="10.119418,12.465266 10.454912,11.768217 10.759038,12.396491 10.490279,12.954885 " fill="#e9e9ff"/>
+   <path d="m11.1 13.2 0.287-0.596-0.633-0.211-0.269 0.558z" points="11.391806,12.607032 10.759038,12.396491 10.490279,12.954885 11.104957,13.203011 " fill="#353564"/>
+   <path d="m11.4 12.6-0.16-0.625-0.777-0.214 0.304 0.628z" points="11.232242,11.981819 10.454912,11.768217 10.759038,12.396491 11.391806,12.607032 " fill="#afafde"/>
+   <path d="m11.1 13.2-0.237-0.465-0.749-0.273 0.371 0.49z" points="10.868079,12.738432 10.119418,12.465266 10.490279,12.954885 11.104957,13.203011 " fill="#4d4d9f"/>
+   <path d="m10.9 12.7 0.364-0.757-0.777-0.214-0.335 0.697z" points="11.232242,11.981819 10.454912,11.768217 10.119418,12.465266 10.868079,12.738432 " fill="#d7d7ff"/>
+   <path d="m11.1 13.2-0.237-0.465 0.364-0.757 0.16 0.625z" points="10.868079,12.738432 11.232242,11.981819 11.391806,12.607032 11.104957,13.203011 " fill="#8686bf"/>
+  </g>
+  <g transform="matrix(2.09 0 0 2.09 -1.16 -1.13)" filter="url(#a)" opacity=".7">
+   <path d="m14.8 15.4 0.438-0.662 1.01 0.146-0.638 0.633z" points="15.196754,14.787062 16.201797,14.932829 15.563557,15.565606 14.758435,15.448834 " fill="#e9e9ff"/>
+   <path d="m14.7 16.3 0.859 0.125-0.0204-0.881-0.805-0.117z" points="15.583926,16.446485 15.563557,15.565606 14.758435,15.448834 14.724612,16.321854 " fill="#353564"/>
+   <path d="m15.6 16.4 0.698-0.449-0.0804-1.06-0.638 0.633z" points="16.282193,15.99706 16.201797,14.932829 15.563557,15.565606 15.583926,16.446485 " fill="#afafde"/>
+   <path d="m14.7 16.3 0.467-0.483 0.0055-1.05-0.438 0.662z" points="15.191269,15.838837 15.196754,14.787062 14.758435,15.448834 14.724612,16.321854 " fill="#4d4d9f"/>
+   <path d="m15.2 15.8 1.09 0.158-0.0804-1.06-1.01-0.146z" points="16.282193,15.99706 16.201797,14.932829 15.196754,14.787062 15.191269,15.838837 " fill="#d7d7ff"/>
+   <path d="m14.7 16.3 0.467-0.483 1.09 0.158-0.698 0.449z" points="15.191269,15.838837 16.282193,15.99706 15.583926,16.446485 14.724612,16.321854 " fill="#8686bf"/>
+  </g>
+ </g>
+</svg>

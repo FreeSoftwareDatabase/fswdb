@@ -1,0 +1,137 @@
+/* © Lorenzo L. Ancora, SPDX-License-Identifier: EUPL-1.2 */
+caption {
+    caption-side: top;
+}
+
+.help-cursor {
+    cursor: help;
+}
+
+.stat {
+    max-width: max-content;
+}
+
+.pagination .page-link:focus {
+    box-shadow: none;
+}
+
+#querydetails .offcanvas-body {
+    background-image: url(/static/img/gears.webp);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+#emptyResultSetCaption {
+    cursor: pointer;
+}
+
+*[data-bs-target] {
+    cursor: pointer;
+}
+
+*[data-entry-obsolete] {
+    color: var(--bs-secondary);
+}
+
+#entryDetails .list-group:empty:after {
+    content: '\2205';
+    font-size: x-large;
+    text-align: center;
+    color: var(--bs-secondary);
+}
+
+@media (max-width: 575.98px) {
+    #entryDetails .list-group:empty:after {
+        font-size: large;
+    }     
+}
+
+b-offcanvas {
+    height: auto !important;
+    max-height: 80% !important;
+}
+
+#kindth,
+.eKind {
+    text-align: center;
+    min-width: 45px;
+}
+.eKind {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.eName {
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.eTeaser:first-letter,
+#entryDetails .lead:first-letter {
+    text-transform: uppercase;
+}
+
+#entryDetails .modal-body {
+    background: url(/static/img/dots.svg) top right repeat-y, url(/static/img/dots_inv.svg) bottom left repeat-y;
+    background-size: 3em;
+    background-clip: content-box;
+}
+
+#entryDetails .modal-header,
+#entryDetails .modal-footer.show {
+    /*border: 10px solid;*/
+    border-image-slice: 1;
+    border-image-source: radial-gradient(circle at center, goldenrod 25%, transparent 40%);
+}
+
+#entryDetails .modal-footer.collapsing {
+    border-top: none;
+}
+
+#entryDetails .sdDetailsIcon,
+#entryDetails #wwwIcon {
+    max-height: 3ex;
+}
+
+#legend x-desc-icon {
+    font-size: x-large;
+}
+#legend x-desc-text dt {
+    font-size: large;
+    font-weight: bold;
+}
+
+i.only-collapsed {
+    display: none;
+}
+.collapsed i.only-collapsed {
+    display: initial;
+}
+i.only-shown {
+    display: initial;
+}
+.collapsed i.only-shown {
+    display: none;
+}
+
+#rshcontroller,
+#edfccontroller {
+    font-family: "Source Sans Pro";
+    font-variant: small-caps;
+}
+
+#rshcontroller:hover i,
+#rshcontroller:focus i,
+#edfccontroller:hover i,
+#edfccontroller:focus i {
+    color: goldenrod;
+}
+
+#spdxswitch {
+    max-height: 2.7ex;
+    filter: grayscale(1);
+}
+#spdxswitch.active {
+    filter: none;
+}

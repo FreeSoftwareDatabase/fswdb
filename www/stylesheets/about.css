@@ -1,0 +1,114 @@
+/* © Lorenzo L. Ancora, SPDX-License-Identifier: EUPL-1.2 */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+
+main p:hover,
+main p:active,
+main p:focus,
+main li:hover,
+main li:active,
+main li:focus {
+    color: var(--bs-black);
+    background-color: var(--bs-white);
+}
+
+span.font-monospace {
+    vertical-align: middle;
+}
+
+section section {
+    border-left: 2px dotted var(--bs-dark);
+}
+
+#bmcbtn {
+    filter: drop-shadow(0px 0px 2px var(--bs-dark));
+}
+
+#bmcbtn:hover, #bmcbtn:focus {
+    filter: drop-shadow(0px 0px 1px var(--bs-dark));
+}
+
+#tcbtn:hover, #tcbtn:focus,
+#bchbtn:hover, #bchbtn:focus {
+    filter: brightness(0.7);
+}
+
+.overline {
+    text-decoration: overline;
+}
+
+/* Contact */
+
+#contactButton {
+    background-color: #FFFFFF;
+}
+
+#contactButton:hover,
+#contactButton:focus {
+    background-color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity));
+    border-color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity));
+}
+
+#contactButton:hover .bi,
+#contactButton:focus .bi {
+    filter: drop-shadow(1px 1px 1px black);
+}
+
+/* Tor Network */
+
+#torButton {
+    background-color: #FFFFFF;
+    border-color: #7D4698;
+}
+
+#torButton:hover,
+#torButton:focus {
+    background-color: #7D4698;
+    border-color: #7D4698;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-dialog .modal-content {
+    animation: "fadein" 0.3s ease-out;
+}
+
+#onionModal {
+    color: #333A41;
+}
+
+#onionModal .modal-header {
+    background-color: #F8F9FA;
+}
+
+#onionModal #torLinks {
+    background-color: #FFFFFF;
+    border-color: #F8F9FA;
+}
+
+#onionModal #torLinks a {
+    color: #7D4698;
+    text-decoration: none;
+}
+
+#onionModal #torLinks a:hover,
+#onionModal #torLinks a:focus {
+    color: #59316B;
+}
+
+.nav-pills .nav-link.active {
+    pointer-events: none;
+    background: linear-gradient(var(--bs-primary) 63%, transparent);
+}
+
+.chartbutton[disabled] {
+    color: var(--bs-gray) !important;
+    cursor: wait;
+}
+
+.accordion-button:hover,
+.accordion-button:focus {
+    filter: contrast(0.9)
+}
