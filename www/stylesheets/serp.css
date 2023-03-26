@@ -116,15 +116,24 @@ i.only-shown {
 }
 
 #rshcontroller,
-#edfccontroller {
+#edfccontroller,
+#ochccontroller {
     font-family: "Source Sans Pro";
     font-variant: small-caps;
+}
+
+#rshcontroller:focus,
+#edfccontroller:focus,
+#ochccontroller:focus {
+    box-shadow: none;
 }
 
 #rshcontroller:hover i,
 #rshcontroller:focus i,
 #edfccontroller:hover i,
-#edfccontroller:focus i {
+#edfccontroller:focus i,
+#ochccontroller:hover i,
+#ochccontroller:focus i {
     color: goldenrod;
 }
 
@@ -134,4 +143,11 @@ i.only-shown {
 }
 #spdxswitch.active {
     filter: none;
+}
+
+#serpt {
+    z-index: 999;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-color: goldenrod;
 }

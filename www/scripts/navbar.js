@@ -41,6 +41,7 @@ var NavigationBar;
         let iframespinner = $("#lif");
         if (e.data.hide === true) {
             iframe.attr("hidden", "hidden");
+            iframespinner.css("width: 3rem; height: 3rem;");
             iframespinner.removeAttr("hidden");
         } else {
             iframe.removeAttr("hidden");
