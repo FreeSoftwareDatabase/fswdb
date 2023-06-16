@@ -53,13 +53,20 @@ b-offcanvas {
 }
 
 #kindth,
-.eKind {
+#hostth,
+.eKind,
+.eHost {
     text-align: center;
     min-width: 45px;
 }
 .eKind {
     font-size: larger;
     font-weight: bold;
+}
+.eHost img {
+    user-select: none;
+    height: 1.7em;
+    width: auto;
 }
 
 .eName {

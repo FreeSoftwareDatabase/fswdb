@@ -1,0 +1,19 @@
+#donations .nav-link {
+    cursor: pointer;
+    user-select: none;
+}
+
+#donations .nav-link.active {
+    cursor: default;
+    pointer-events: none;
+}
+
+#donations .nav-link:focus,
+#donations .nav-link:hover {
+    filter: brightness(0.8);
+}
+
+#donations figure {
+    width: 20em;
+    height: auto;
+}

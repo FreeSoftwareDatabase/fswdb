@@ -18,13 +18,21 @@ $(function() {
     matchselector.on("change", function() {
         let selector = $(this);
         let label = $("#mlabel");
-        let prefix = selector.val() == "pre";
-        if (prefix == true) {
-            label.html(label.html().replace("postfix", "prefix"));
+        switch (selector.val()) {
+          case "pre":
             mtype = "start";
-        } else {
-            label.html(label.html().replace("prefix", "postfix"));
+            break;
+
+          case "pst":
             mtype = "end";
+            break;
+
+          case "ter":
+            mtype = "start and end";
+            break;
+
+          default:
+            mtype = "start";
         }
     });
     function updfdesc() {
@@ -32,12 +40,12 @@ $(function() {
         let ssval = systemselector.val();
         let mfval = matchfilter.val();
         if (tsval != "" && tsval !== undefined && ssval != "" && ssval !== undefined) {
-            fdesc.text(`Search for ${tsval.toString().replace("-", " ")}-related resources which are compatible with ${ssval}.`);
+            fdesc.text(`Search for ${tsval.toString().replace("-", " ")}-related resources that are compatible with ${ssval}.`);
         } else {
             fdesc.text("");
         }
         if (mtype != "" && mfval != "") {
-            fdesce.text(`Select only those resources which ${mtype} with ${mfval}.`);
+            fdesce.text(`Display only the resources that ${mtype} with ${mfval}.`);
             submit.prop("disabled", false);
         } else {
             fdesce.text("");

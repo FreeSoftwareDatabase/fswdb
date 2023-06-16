@@ -44,11 +44,13 @@ var EntryDetails;
         let eventSource = $(e.relatedTarget);
         let entryID = parseInt(eventSource.data("entry-id"));
         let entryKind = eventSource.children(".eKind").data("kind");
+        let entryHostIcon = eventSource.children(".eHost").data("icon");
         let entryName = eventSource.children(".eName").text();
         let entryTeaser = eventSource.children(".eTeaser").text();
         let entryDate = new Date(eventSource.data("entry-date"));
         let entryObsolete = eventSource.data("entry-obsolete") !== undefined;
         Form.modal.find("#entryDetailsLabelType").html(entryKind);
+        Form.modal.find("#entryDetailsBody #wwwIcon").attr("src", `/static/img/hp/${entryHostIcon}.webp`);
         Form.modal.find("#entryDetailsLabelTitle").html(entryName);
         Form.modal.find("#entryDetailsTeaser").html(entryTeaser);
         Form.modal.find("#entryDetailsUpdateTimestamp").html(entryDate.toLocaleDateString());
@@ -134,7 +136,6 @@ var EntryDetails;
         Object.freeze(softwareDetails);
         Form.Description.set(softwareDetails.description.text());
         Form.HomePage.set(softwareDetails.homepage.text());
-        Form.HomePage.Icon.set(softwareDetails.homepage.text(), sdWWWIcon);
         {
             let ucTmpl = $("template#usesTmpl").first();
             let plTmpl = $("template#platformsTmpl").first();
@@ -176,15 +177,6 @@ var EntryDetails;
                 sdHomepage.attr("href", url);
             }
             HomePage.set = set;
-            let Icon;
-            (function(Icon) {
-                async function set(url, iconEl) {
-                    let icon = "world";
-                    if (url.indexOf("github") > -1) icon = "github"; else if (url.indexOf("gitlab") > -1) icon = "gitlab"; else if (url.indexOf("bitbucket") > -1) icon = "bitbucket"; else if (url.indexOf("mozilla.org") > -1) icon = "mozilla"; else if (url.indexOf("addons.google.com") > -1) icon = "chrome"; else if (url.indexOf("google.com") > -1) icon = "google"; else if (url.indexOf("wikipedia") > -1 || url.indexOf("mediawiki") > -1 || url.indexOf("wiki.") > -1 || url.indexOf("/wiki/") > -1) icon = "wiki"; else if (url.indexOf("open") > -1 && url.indexOf("source") > -1 || url.indexOf("sourceforge") > -1) icon = "open-source"; else if (url.indexOf("git.") > -1 || url.indexOf("vcs") > -1 || url.indexOf("trunk/") > -1) icon = "git";
-                    iconEl.attr("src", `/static/img/hp/${icon}.webp`);
-                }
-                Icon.set = set;
-            })(Icon = HomePage.Icon || (HomePage.Icon = {}));
         })(HomePage = Form.HomePage || (Form.HomePage = {}));
         let UseCases;
         (function(UseCases) {

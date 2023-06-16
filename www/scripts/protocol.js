@@ -93,23 +93,31 @@ var Automation;
     Automation.updaterequisites = updaterequisites;
 })(Automation || (Automation = {}));
 
-var GDPR;
+var EuropeanUnion;
 
-(function(GDPR) {
+(function(EuropeanUnion) {
     function _init_storage() {
-        if (WebBrowser._localstorage_available()) GDPR.stg = window.localStorage; else GDPR.stg = window.sessionStorage;
+        if (WebBrowser._localstorage_available()) EuropeanUnion.stg = window.localStorage; else EuropeanUnion.stg = window.sessionStorage;
     }
     function acceptcookies() {
         let cdate = Date.now();
-        GDPR.stg.setItem("cookiesaccepted", String(cdate));
+        EuropeanUnion.stg.setItem("cookiesaccepted", String(cdate));
+    }
+    function accepteupl() {
+        let cdate = Date.now();
+        EuropeanUnion.stg.setItem("euplaccepted", String(cdate));
     }
     function cookiesaccepted() {
-        let d = GDPR.stg.getItem("cookiesaccepted");
+        let d = EuropeanUnion.stg.getItem("cookiesaccepted");
         if (d !== null) {
             let adate = Number.parseInt(d);
             let cdate = Date.now();
             return cdate - adate < 15768e6;
         } else return false;
+    }
+    function euplaccepted() {
+        let d = EuropeanUnion.stg.getItem("euplaccepted");
+        return d !== null;
     }
     function deletenotice(e) {
         let notice = $(e.target);
@@ -123,9 +131,23 @@ var GDPR;
             notice.remove();
         } catch {}
     }
+    function setslide() {
+        let gdprnotice = $("#eucntcagdpr");
+        let euplnotice = $("#eucntcaeupl");
+        let cookiesok = cookiesaccepted();
+        let euplok = euplaccepted();
+        if (cookiesok == true && euplok == false) {
+            gdprnotice.removeClass("active");
+            euplnotice.addClass("active");
+        } else if (cookiesok == false && euplok == true) {
+            euplnotice.removeClass("active");
+            gdprnotice.addClass("active");
+        }
+    }
     function shownotice(data, textStatus, jqXHR) {
         $(data).insertAfter("main");
-        let cNotice = $("#gdprcnt");
+        let cNotice = $("#eucnt");
+        let cSlide = cNotice.find("#eucntca");
         let cToast = null;
         if (cNotice.length > 0 && Automation.botUA == false) {
             function shownoticeintoast() {
@@ -133,8 +155,10 @@ var GDPR;
                 if (cookieNotice === undefined) return;
                 cToast = new bootstrap.Toast(cookieNotice);
                 cToast.show();
-                cNotice.on("hide.bs.toast", acceptcookies);
+                cSlide.on("slide.bs.carousel", acceptcookies);
+                cNotice.on("hide.bs.toast", accepteupl);
                 cNotice.on("hidden.bs.toast", deletenotice);
+                cNotice.on("shown.bs.toast", setslide);
                 JQ.UI.mgrdraggable();
                 BS.Popper.mgrtooltips();
                 if (Automation.autofocus == true) {
@@ -148,21 +172,32 @@ var GDPR;
             window.setTimeout(shownoticeintoast, 500);
         }
     }
-    function mgrcookienotice() {
+    function mgrnotice() {
         _init_storage();
-        if (cookiesaccepted() == true) deletenode(); else {
-            $.get("/static/cookietoast.html", shownotice, "html").fail(function() {
-                window.alert("This website uses only technical cookies.");
-                acceptcookies();
+        let cookiesok = cookiesaccepted();
+        let euplok = euplaccepted();
+        if (cookiesok && euplok) deletenode(); else {
+            $.get("/static/eutoast.html", shownotice, "html").fail(function() {
+                if (cookiesok == false) {
+                    window.alert("This website uses only technical cookies.");
+                    acceptcookies();
+                }
+                if (euplok == false) {
+                    let pr = window.confirm("All scripts served from this domain are licensed under the EUPL 1.2 (see: https://kb.fswdb.eu/licensing/eupl-12/).");
+                    if (pr === true) accepteupl(); else {
+                        window.alert("To browse this website you must accept the license.");
+                        window.setTimeout(window.location.reload.bind(window.location), 3e3);
+                    }
+                }
             });
         }
     }
-    GDPR.mgrcookienotice = mgrcookienotice;
-})(GDPR || (GDPR = {}));
+    EuropeanUnion.mgrnotice = mgrnotice;
+})(EuropeanUnion || (EuropeanUnion = {}));
 
 $(function() {
     HypertextTransfer.autoredirect();
     URIs.startdefusinghashuris();
     Automation.updaterequisites();
-    GDPR.mgrcookienotice();
+    EuropeanUnion.mgrnotice();
 });

@@ -1,0 +1,13 @@
+s-distro {
+    min-height: 15em;
+    max-height: 15em;
+}
+
+s-distro .vote:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+s-distro .vote:not(:hover, :focus) {
+    filter: grayscale(1);
+}

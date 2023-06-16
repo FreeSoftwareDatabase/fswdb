@@ -3,6 +3,13 @@
     opacity: 0.5;
 }
 
+#msfl {
+    width: intrinsic;
+    width: -moz-max-content;
+    width: -webkit-max-content;
+    width: max-content;
+}
+
 #sgroup {
     min-width: 10em;
     max-width: 30em;
@@ -27,13 +34,13 @@
 }
 
 @keyframes filterwarn {
-    from { filter: grayscale(80%); }
-    to { filter: grayscale(0%); }
+    from {filter: brightness(100%);}
+    to {filter: brightness(70%);}
 }
 
 @supports (animation: filterwarn) {
-    #limitDropDown.active {
-        animation: filterwarn 0.7s infinite alternate; 
+    #limitDropDown.active::after {
+        animation: filterwarn 1.0s infinite alternate;
     }
 }
 

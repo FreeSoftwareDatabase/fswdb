@@ -36,7 +36,8 @@ header .navbar-dark #ccpay a {
     color: var(--bs-light);
 }
 
-.wwwname {
+.wwwname,
+#copyright {
     font-family: "Source Sans Pro";
 }
 @media (max-width: 767.98px) {
@@ -107,6 +108,15 @@ footer #rtt:hover,
 footer #rtt:focus {
     cursor: pointer;
     color: goldenrod;
+}
+
+footer .btn:focus,
+footer .btn:active {
+    text-decoration-color: goldenrod;
+}
+
+footer .btn.active {
+    cursor: default;
 }
 
 .dropdown-toggle.show {
