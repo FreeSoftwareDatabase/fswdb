@@ -46,6 +46,15 @@ header .navbar-dark #ccpay a {
     }
 }
 
+#copyright {
+    color: darkgray;
+}
+
+#copyright:hover,
+#copyright:focus {
+    color: black;
+}
+
 header .wwwname {
     background: url("/static/img/goldenunderline.png") no-repeat bottom center/100% auto;
 }
