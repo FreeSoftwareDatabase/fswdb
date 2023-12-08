@@ -18,8 +18,6 @@ var Queues;
             $("form #oraddr").val(tresohp);
         }
         Irregular.preparesugform = preparesugform;
-        function cleansugform(e) {}
-        Irregular.cleansugform = cleansugform;
         function browsereshomepage(e) {
             let eid = $(e.target).parents("[data-eid]").data("eid");
             let hpspan = $(`[data-eid=${eid}] .nloc`);
@@ -29,32 +27,44 @@ var Queues;
         function prepare() {
             let btn = $(".openhpbtn");
             btn.on("dblclick", browsereshomepage);
+            turnstile.ready(function() {
+                turnstile.render("#cft", {
+                    sitekey: "0x4AAAAAAAB8ni7E5tNewb__",
+                    callback: Turnstile.rendered,
+                    "expired-callback": Turnstile.expired,
+                    "timeout-callback": Turnstile.timeout,
+                    "error-callback": Turnstile.error,
+                    action: "hpsug"
+                });
+            });
         }
         Irregular.prepare = prepare;
+        let Turnstile;
+        (function(Turnstile) {
+            function error() {
+                $("#hpsugsbtn").attr("disabled", "disabled");
+                $("#hpsugsbtn").addClass("btn-danger");
+            }
+            Turnstile.error = error;
+            function timeout() {
+                $("#hpsugsbtn").attr("disabled", "disabled");
+            }
+            Turnstile.timeout = timeout;
+            function expired() {
+                $("#hpsugsbtn").attr("disabled", "disabled");
+            }
+            Turnstile.expired = expired;
+            function rendered(token) {
+                $("#hpsugsbtn").removeAttr("disabled");
+                $("#hpsugsbtn").removeClass("btn-danger");
+            }
+            Turnstile.rendered = rendered;
+        })(Turnstile = Irregular.Turnstile || (Irregular.Turnstile = {}));
     })(Irregular = Queues.Irregular || (Queues.Irregular = {}));
 })(Queues || (Queues = {}));
-
-function turnstileerror() {
-    $("#hpsugsbtn").attr("disabled", "disabled");
-    $("#hpsugsbtn").addClass("btn-danger");
-}
-
-function turnstiletimeout() {
-    $("#hpsugsbtn").attr("disabled", "disabled");
-}
-
-function turnstileexpired() {
-    $("#hpsugsbtn").attr("disabled", "disabled");
-}
-
-function turnstilerendered(token) {
-    $("#hpsugsbtn").removeAttr("disabled");
-    $("#hpsugsbtn").removeClass("btn-danger");
-}
 
 $(function() {
     let hpSugModal = $("#suggestURLModal");
     hpSugModal.on("show.bs.modal", Queues.Irregular.preparesugform);
-    hpSugModal.on("hide.bs.modal", Queues.Irregular.cleansugform);
     Queues.Irregular.prepare();
 });

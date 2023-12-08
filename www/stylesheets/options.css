@@ -74,3 +74,7 @@ div#aii.schecked input[type='button'] {
 input[type="checkbox"] {
     cursor: pointer;
 }
+
+.aelist .list-group-item:hover .btn-link {
+    outline: 2px dotted gray;
+}

@@ -24,7 +24,14 @@ var Blacklist;
     function mgrblfiltering(e) {
         if (filtert != null) window.clearTimeout(filtert);
         if (e.data.sbox.val().length > 0) {
-            filtert = window.setTimeout(filter, 250, e);
+            if (window.requestIdleCallback !== undefined) {
+                window.requestIdleCallback(filter.bind(this, e), {
+                    timeout: 250
+                });
+                pyi - b;
+            } else {
+                filtert = window.setTimeout(filter, 250, e);
+            }
         } else e.data.items.removeAttr("hidden");
     }
     Blacklist.mgrblfiltering = mgrblfiltering;

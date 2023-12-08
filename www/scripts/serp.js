@@ -1,45 +1,18 @@
 /* © Lorenzo L. Ancora, SPDX-License-Identifier: EUPL-1.2 */
 "use strict";
 
-var Telegram;
-
-(function(Telegram) {
-    let Chat;
-    (function(Chat) {
-        function load() {
-            let chatid = $(this).data("chat-id");
-            let chatbox = $("#tgchat");
-            chatbox.load(`/__serp_details_chat/${chatid}`, function(response, status, xhr) {
-                if (status == "error") {
-                    chatbox.removeClass("placeholder");
-                    chatbox.html('<h3 class="bi bi-file-earmark-x user-select-none text-center text-danger"></h3>');
-                } else {
-                    const observer = new MutationObserver(() => {
-                        let iframe = $(this).find("iframe[id|=comments-app]").first();
-                        iframe.on("load", function() {
-                            chatbox.removeClass("placeholder");
-                        });
-                    });
-                    observer.observe(this, {
-                        childList: true
-                    });
-                }
-            });
-        }
-        Chat.load = load;
-        function unload() {
-            let chatbox = $("#tgchat");
-            chatbox.addClass("placeholder");
-            chatbox.children().remove();
-        }
-        Chat.unload = unload;
-    })(Chat = Telegram.Chat || (Telegram.Chat = {}));
-})(Telegram || (Telegram = {}));
-
 var EntryDetails;
 
 (function(EntryDetails) {
     let fulldetailsXHR = null;
+    function hide(e) {
+        Form.modal.find("#entryDetailsBody").fadeOut("fast");
+    }
+    EntryDetails.hide = hide;
+    function show(e) {
+        Form.modal.find("#entryDetailsBody").fadeIn("slow");
+    }
+    EntryDetails.show = show;
     function copydetails(e) {
         let eventSource = $(e.relatedTarget);
         let entryID = parseInt(eventSource.data("entry-id"));
@@ -405,9 +378,9 @@ $(function() {
     EntryDetails.Form.modal = $(".modal#entryDetails");
     let chatbox = EntryDetails.Form.modal.find("#ochfootercollapse");
     EntryDetails.Form.modal.on("show.bs.modal", EntryDetails.loadfulldetails).on("show.bs.modal", EntryDetails.copydetails);
+    EntryDetails.Form.modal.on("show.bs.modal", EntryDetails.hide);
+    EntryDetails.Form.modal.on("shown.bs.modal", EntryDetails.show);
     EntryDetails.Form.modal.on("hide.bs.modal", EntryDetails.abortloadfulldetailsloading);
-    chatbox.on("show.bs.offcanvas", Telegram.Chat.load);
-    chatbox.on("hidden.bs.offcanvas", Telegram.Chat.unload);
     let noresultsc = $("#emptyResultSetCaption");
     if (noresultsc.length > 0) {
         noresultsc.on("click", function() {

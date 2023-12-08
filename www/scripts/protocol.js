@@ -150,26 +150,21 @@ var EuropeanUnion;
         let cSlide = cNotice.find("#eucntca");
         let cToast = null;
         if (cNotice.length > 0 && Automation.botUA == false) {
-            function shownoticeintoast() {
-                let cookieNotice = cNotice.get(0);
-                if (cookieNotice === undefined) return;
-                cToast = new bootstrap.Toast(cookieNotice);
-                cToast.show();
-                cSlide.on("slide.bs.carousel", acceptcookies);
-                cNotice.on("hide.bs.toast", accepteupl);
-                cNotice.on("hidden.bs.toast", deletenotice);
-                cNotice.on("shown.bs.toast", setslide);
-                JQ.UI.mgrdraggable();
-                BS.Popper.mgrtooltips();
-                if (Automation.autofocus == true) {
-                    try {
-                        cNotice.find("button[data-bs-dismiss]").first().trigger("focus", {
-                            preventScroll: true
-                        });
-                    } catch {}
-                }
+            let cookieNotice = cNotice.get(0);
+            if (cookieNotice === undefined) return;
+            cToast = new bootstrap.Toast(cookieNotice);
+            cToast.show();
+            cSlide.on("slide.bs.carousel", acceptcookies);
+            cNotice.on("hide.bs.toast", accepteupl).on("hidden.bs.toast", deletenotice).on("shown.bs.toast", setslide);
+            JQ.UI.mgrdraggable();
+            BS.Popper.mgrtooltips();
+            if (Automation.autofocus == true) {
+                try {
+                    cNotice.find("button[data-bs-dismiss]").first().trigger("focus", {
+                        preventScroll: true
+                    });
+                } catch {}
             }
-            window.setTimeout(shownoticeintoast, 500);
         }
     }
     function mgrnotice() {
@@ -199,5 +194,9 @@ $(function() {
     HypertextTransfer.autoredirect();
     URIs.startdefusinghashuris();
     Automation.updaterequisites();
-    EuropeanUnion.mgrnotice();
+    if (window.requestIdleCallback !== undefined) {
+        window.requestIdleCallback(EuropeanUnion.mgrnotice, {
+            timeout: 1e3
+        });
+    } else EuropeanUnion.mgrnotice();
 });

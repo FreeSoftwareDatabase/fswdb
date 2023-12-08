@@ -46,3 +46,7 @@
 #onionModal #torLinks a:focus {
     color: #59316B;
 }
+
+#onionModal .modal-header {
+    background-color: #F8F9FA;
+}

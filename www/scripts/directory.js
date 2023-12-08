@@ -10,9 +10,18 @@ $(function() {
     let fdesce = $("#formdescend");
     let mtype = "";
     let submit = $('#sdirectory button[type="submit"]');
-    try {
-        systemselector.val(navigator.platform.split(" ", 1)[0]);
-    } catch {}
+    function getselectedoptions(selector) {
+        let options = selector.children("option");
+        let selected = options.filter((i, e) => {
+            return e.selected;
+        });
+        selected.total = options.length;
+        return selected;
+    }
+    function alloptionsselected(selector) {
+        let selected = getselectedoptions(selector);
+        return selected.length == selected.total;
+    }
     matchselector.val("");
     matchfilter.val("");
     matchselector.on("change", function() {
@@ -43,8 +52,18 @@ $(function() {
         let tsval = taskselector.val();
         let ssval = systemselector.val();
         let mfval = matchfilter.val();
+        let anytask = alloptionsselected(taskselector);
+        let anysystem = alloptionsselected(systemselector);
         if (tsval != "" && tsval !== undefined && ssval != "" && ssval !== undefined) {
-            fdesc.text(`Search for ${tsval.toString().replace("-", " ")}-related resources that are compatible with ${ssval}.`);
+            if (anytask && anysystem) {
+                fdesc.text(`Search for any kind of resource, ignoring system compatibility.`);
+            } else if (anytask) {
+                fdesc.text(`Search for any kind of resource compatible with ${ssval.toString().replace(/,/g, " or ")}.`);
+            } else if (anysystem) {
+                fdesc.text(`Search for ${tsval.toString().replace(/,/g, " or ")}-related resources, ignoring system compatibility.`);
+            } else {
+                fdesc.text(`Search for ${tsval.toString().replace(/,/g, " or ")}-related resources that are compatible with ${ssval.toString().replace(/,/g, " or ")}.`);
+            }
         } else {
             fdesc.text("");
         }
@@ -62,13 +81,37 @@ $(function() {
     }
     function updfcategoryicon(e) {
         let icon = $("img#caticon");
-        let catname = String($(e.target).val()).valueOf();
-        if (catname !== undefined && catname != "") icon.attr("src", `/static/img/uc/${catname}.webp`); else icon.attr("src", "/static/img/uc/category.webp");
+        let selector = $(e.target);
+        let catname = String(selector.val()).valueOf();
+        let multicat = getselectedoptions(selector).length > 1;
+        if (catname !== undefined && catname != "" && !multicat) {
+            icon.attr("src", `/static/img/uc/${catname}.webp`);
+            icon.removeClass("novalue");
+        } else {
+            icon.attr("src", "/static/img/uc/category.webp");
+            if (multicat) {
+                icon.removeClass("novalue");
+            } else {
+                icon.addClass("novalue");
+            }
+        }
     }
     function updfosicon(e) {
         let icon = $("img#OSicon");
-        let osname = String($(e.target).val()).valueOf();
-        if (osname !== undefined && osname != "") icon.attr("src", `/static/img/os/${osname}.webp`); else icon.attr("src", "/static/img/os/System.webp");
+        let selector = $(e.target);
+        let osname = String(selector.val()).valueOf();
+        let multios = getselectedoptions(selector).length > 1;
+        if (osname !== undefined && osname != "" && !multios) {
+            icon.attr("src", `/static/img/os/${osname}.webp`);
+            icon.removeClass("novalue");
+        } else {
+            icon.attr("src", "/static/img/os/System.webp");
+            if (multios) {
+                icon.removeClass("novalue");
+            } else {
+                icon.addClass("novalue");
+            }
+        }
     }
     function updffiltericon(e) {
         let icon = $("img#filtericon");
@@ -79,5 +122,5 @@ $(function() {
     taskselector.on("change", updfcategoryicon).trigger("change");
     systemselector.on("change", updfosicon).trigger("change");
     matchselector.on("change", updffiltericon).trigger("change");
-    updfdesc();
+    window.setTimeout(updfdesc, 3e3);
 });

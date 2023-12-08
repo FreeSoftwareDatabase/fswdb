@@ -14,3 +14,23 @@
     max-height: 64px;
     filter: drop-shadow(0px 0px 2px gray);
 }
+
+form .dropdown-menu {
+    z-index: 9999;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    border-color: gray;
+}
+
+.dropdown-menu button:hover,
+.dropdown-menu button:focus {
+    border-bottom-color: goldenrod;
+}
+
+.dropdown-menu .check-mark {
+    color: goldenrod;
+    filter: drop-shadow(0px 1px 1px gray);
+}
+
+form .sicon.novalue {
+    opacity: 0.5;
+}

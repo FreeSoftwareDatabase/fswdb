@@ -156,11 +156,17 @@ var Security;
                 stag.val("");
             }
             TokenInput.cleartag = cleartag;
-            function triminputs(e) {
-                let input = $(e.currentTarget);
-                input.val(String(input.val()).trim());
+            function trimcontent(e) {
+                if ("currentTarget" in e) {
+                    let input = $(e.currentTarget);
+                    let txt = String(input.val());
+                    if (txt.indexOf(" ") > -1) {
+                        input.val(txt.trim());
+                        return false;
+                    }
+                }
             }
-            TokenInput.triminputs = triminputs;
+            TokenInput.trimcontent = trimcontent;
         })(TokenInput = Widget.TokenInput || (Widget.TokenInput = {}));
         let Modal;
         (function(Modal) {
@@ -218,7 +224,7 @@ var Security;
                         timeout: 2e3
                     }, Widget.Modal.Button.manage);
                     m.on("hide.bs.modal", Token.abortvalidation);
-                    m.find("input").on("change", Widget.TokenInput.triminputs);
+                    m.find("input").on("change focusout paste", Widget.TokenInput.trimcontent);
                     b.on("click", {
                         tokenInput: t,
                         secTagInput: s,

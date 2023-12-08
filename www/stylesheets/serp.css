@@ -22,6 +22,12 @@ caption {
     background-position: top right;
 }
 
+#querydetails .offcanvas-body #stats div,
+#querydetails .offcanvas-body #legend {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
 #emptyResultSetCaption {
     cursor: pointer;
 }
@@ -99,14 +105,6 @@ b-offcanvas {
 #entryDetails .sdDetailsIcon,
 #entryDetails #wwwIcon {
     max-height: 3ex;
-}
-
-#legend x-desc-icon {
-    font-size: x-large;
-}
-#legend x-desc-text dt {
-    font-size: large;
-    font-weight: bold;
 }
 
 i.only-collapsed {

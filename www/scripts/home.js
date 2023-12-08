@@ -83,19 +83,19 @@ var HomePage;
             }
             Dropdown.setmacrocategorycounts = setmacrocategorycounts;
         })(Dropdown = MainSearchBar.Dropdown || (MainSearchBar.Dropdown = {}));
-        function insert(data, textStatus, jqXHR) {
+        function prepare() {
+            $(document).on("click", "#mainsearch .form-text", TextBox.focus);
+            $(document).on("click", "#mainsearch *[data-limit]", Dropdown.mgrlimit);
+            $(document).on("submit", "#mainsearch form", Form.clean);
+            AutoFocus.mgrfocus();
+        }
+        function populate(data, textStatus, jqXHR) {
             $(function() {
                 let sformconfig = $(data).find("searchform");
                 TextBox.setplaceholder(sformconfig, $("#mainsearch form"));
                 Dropdown.setmacrocategorycounts(sformconfig, $("#mainsearch #limitDropDownList"));
                 prepare();
             });
-        }
-        function prepare() {
-            $(document).on("click", "#mainsearch .form-text", TextBox.focus);
-            $(document).on("click", "#mainsearch *[data-limit]", Dropdown.mgrlimit);
-            $(document).on("submit", "#mainsearch form", Form.clean);
-            AutoFocus.mgrfocus();
         }
         function downloadXML() {
             function sformloaderror(xhr, status, error) {
@@ -112,7 +112,7 @@ var HomePage;
             $.ajax({
                 url: "/search/form",
                 timeout: 5e3 + extratimeout,
-                success: insert,
+                success: populate,
                 error: function(xhr, status, error) {
                     sformloaderror(xhr, status, error);
                 },
@@ -120,6 +120,10 @@ var HomePage;
             });
         }
         MainSearchBar.downloadXML = downloadXML;
-        downloadXML();
+        if (window.requestIdleCallback !== undefined) {
+            window.requestIdleCallback(downloadXML, {
+                timeout: 500
+            });
+        } else downloadXML();
     })(MainSearchBar = HomePage.MainSearchBar || (HomePage.MainSearchBar = {}));
 })(HomePage || (HomePage = {}));
